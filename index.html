@@ -4,8 +4,6 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>SIXTICK — 60 secondes par jour</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Syne:wght@400;700;800;900&display=swap" rel="stylesheet">
   <style>
     :root {
       --bg: #0A0A0A;
@@ -14,6 +12,9 @@
       --white: #FFFFFF;
       --muted: rgba(255,255,255,0.45);
       --border: rgba(181,255,77,0.15);
+      --font-display: 'Trebuchet MS', 'Segoe UI', Arial, sans-serif;
+      --font-mono: 'Courier New', Courier, monospace;
+      --font-body: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     }
 
     * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -21,20 +22,9 @@
     body {
       background: var(--bg);
       color: var(--white);
-      font-family: 'Syne', sans-serif;
+      font-family: var(--font-body);
       min-height: 100vh;
       overflow-x: hidden;
-    }
-
-    /* ── NOISE OVERLAY ── */
-    body::before {
-      content: '';
-      position: fixed;
-      inset: 0;
-      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
-      pointer-events: none;
-      z-index: 0;
-      opacity: 0.4;
     }
 
     /* ── HERO ── */
@@ -47,7 +37,6 @@
       justify-content: center;
       padding: 60px 24px;
       text-align: center;
-      z-index: 1;
     }
 
     .hero::after {
@@ -61,23 +50,28 @@
       left: 50%;
       transform: translate(-50%, -50%);
       pointer-events: none;
+      z-index: 0;
     }
 
+    .hero > * { position: relative; z-index: 1; }
+
     .logo {
-      font-size: clamp(48px, 12vw, 96px);
+      font-family: var(--font-display);
+      font-size: clamp(52px, 12vw, 100px);
       font-weight: 900;
       color: var(--primary);
-      letter-spacing: 6px;
-      text-shadow: 0 0 40px rgba(181,255,77,0.3);
-      animation: fadeUp 0.8s ease both;
+      letter-spacing: 8px;
+      text-shadow: 0 0 40px rgba(181,255,77,0.25);
+      animation: fadeUp 0.7s ease both;
     }
 
     .tagline {
       margin-top: 16px;
-      font-size: clamp(16px, 4vw, 22px);
+      font-family: var(--font-mono);
+      font-size: clamp(14px, 3.5vw, 20px);
       color: var(--muted);
-      font-family: 'Space Mono', monospace;
-      animation: fadeUp 0.8s 0.15s ease both;
+      letter-spacing: 3px;
+      animation: fadeUp 0.7s 0.1s ease both;
     }
 
     .tagline span { color: var(--primary); }
@@ -85,10 +79,10 @@
     .hero-desc {
       margin-top: 32px;
       max-width: 480px;
-      font-size: 18px;
-      line-height: 1.7;
-      color: rgba(255,255,255,0.7);
-      animation: fadeUp 0.8s 0.3s ease both;
+      font-size: clamp(16px, 3vw, 18px);
+      line-height: 1.8;
+      color: rgba(255,255,255,0.65);
+      animation: fadeUp 0.7s 0.2s ease both;
     }
 
     .price-badge {
@@ -100,35 +94,37 @@
       border: 1px solid var(--border);
       border-radius: 50px;
       padding: 14px 28px;
-      font-size: 18px;
+      font-size: 17px;
       font-weight: 700;
-      animation: fadeUp 0.8s 0.45s ease both;
+      animation: fadeUp 0.7s 0.3s ease both;
     }
 
-    .price-badge .price { color: var(--primary); font-size: 22px; }
+    .price-badge .price {
+      color: var(--primary);
+      font-size: 22px;
+      font-family: var(--font-mono);
+    }
 
     .manifesto {
-      margin-top: 60px;
-      max-width: 560px;
-      border-left: 2px solid var(--primary);
-      padding: 20px 24px;
-      font-size: 17px;
-      line-height: 1.8;
+      margin-top: 52px;
+      max-width: 520px;
+      border-left: 3px solid var(--primary);
+      padding: 18px 24px;
+      font-size: 16px;
+      line-height: 1.9;
       color: var(--muted);
       font-style: italic;
       text-align: left;
-      animation: fadeUp 0.8s 0.6s ease both;
+      animation: fadeUp 0.7s 0.4s ease both;
     }
 
     /* ── FEATURES ── */
     .features {
-      position: relative;
-      z-index: 1;
-      max-width: 800px;
+      max-width: 840px;
       margin: 0 auto;
       padding: 80px 24px;
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
       gap: 20px;
     }
 
@@ -137,46 +133,48 @@
       border: 1px solid rgba(255,255,255,0.06);
       border-radius: 16px;
       padding: 24px;
-      transition: border-color 0.2s;
+      transition: border-color 0.2s, transform 0.2s;
     }
 
-    .feature-card:hover { border-color: var(--border); }
-    .feature-card .emoji { font-size: 28px; margin-bottom: 12px; }
-    .feature-card h3 { font-size: 16px; font-weight: 700; margin-bottom: 6px; }
-    .feature-card p { font-size: 14px; color: var(--muted); line-height: 1.6; }
+    .feature-card:hover {
+      border-color: var(--border);
+      transform: translateY(-2px);
+    }
+
+    .feature-card .emoji { font-size: 28px; margin-bottom: 12px; display: block; }
+    .feature-card h3 { font-size: 16px; font-weight: 700; margin-bottom: 8px; }
+    .feature-card p { font-size: 14px; color: var(--muted); line-height: 1.65; }
 
     /* ── DIVIDER ── */
     .divider {
-      position: relative;
-      z-index: 1;
       height: 1px;
       background: var(--border);
-      max-width: 800px;
+      max-width: 840px;
       margin: 0 auto;
     }
 
     /* ── PRIVACY ── */
     .privacy {
-      position: relative;
-      z-index: 1;
       max-width: 700px;
       margin: 0 auto;
       padding: 80px 24px 120px;
     }
 
     .privacy h2 {
-      font-size: 32px;
+      font-family: var(--font-display);
+      font-size: 34px;
       font-weight: 900;
       color: var(--primary);
-      margin-bottom: 8px;
-      letter-spacing: 2px;
+      margin-bottom: 6px;
+      letter-spacing: 3px;
     }
 
     .privacy .updated {
-      font-family: 'Space Mono', monospace;
+      font-family: var(--font-mono);
       font-size: 12px;
       color: var(--muted);
       margin-bottom: 48px;
+      display: block;
     }
 
     .privacy h3 {
@@ -189,55 +187,60 @@
 
     .privacy p, .privacy li {
       font-size: 15px;
-      line-height: 1.8;
-      color: rgba(255,255,255,0.65);
+      line-height: 1.85;
+      color: rgba(255,255,255,0.62);
     }
 
     .privacy ul {
-      padding-left: 20px;
-      margin-top: 8px;
+      padding-left: 22px;
+      margin-top: 10px;
     }
 
     .privacy li { margin-bottom: 6px; }
 
-    .privacy .highlight {
-      background: rgba(181,255,77,0.08);
+    .privacy a {
+      color: var(--primary);
+      text-decoration: none;
+    }
+
+    .privacy a:hover { text-decoration: underline; }
+
+    .highlight {
+      background: rgba(181,255,77,0.07);
       border: 1px solid var(--border);
-      border-radius: 12px;
+      border-radius: 14px;
       padding: 20px 24px;
       margin-top: 40px;
     }
 
-    .privacy .highlight p {
-      color: rgba(255,255,255,0.85);
-      font-size: 16px;
+    .highlight p {
+      color: rgba(255,255,255,0.88) !important;
+      font-size: 16px !important;
       font-weight: 600;
     }
 
     /* ── FOOTER ── */
     footer {
-      position: relative;
-      z-index: 1;
       text-align: center;
-      padding: 40px 24px;
+      padding: 36px 24px;
       border-top: 1px solid rgba(255,255,255,0.05);
-      font-family: 'Space Mono', monospace;
+      font-family: var(--font-mono);
       font-size: 12px;
       color: var(--muted);
+      letter-spacing: 1px;
     }
 
     footer span { color: var(--primary); }
 
     /* ── ANIMATIONS ── */
     @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(20px); }
+      from { opacity: 0; transform: translateY(18px); }
       to   { opacity: 1; transform: translateY(0); }
     }
 
-    /* ── RESPONSIVE ── */
     @media (max-width: 600px) {
       .features { grid-template-columns: 1fr; }
-      .manifesto { font-size: 15px; }
+      .price-badge { flex-direction: column; gap: 4px; text-align: center; }
     }
   </style>
 </head>
@@ -266,22 +269,22 @@
   <!-- FEATURES -->
   <section class="features">
     <div class="feature-card">
-      <div class="emoji">⚡</div>
+      <span class="emoji">⚡</span>
       <h3>39 exercices</h3>
       <p>Respiration, rire forcé, grimace folle, boxeur fantôme... Un par jour, aléatoire.</p>
     </div>
     <div class="feature-card">
-      <div class="emoji">🔥</div>
+      <span class="emoji">🔥</span>
       <h3>Streak sans pression</h3>
       <p>T'as raté un jour ? "T'as repris. C'est tout ce qui compte." On ne culpabilise pas ici.</p>
     </div>
     <div class="feature-card">
-      <div class="emoji">🔒</div>
+      <span class="emoji">🔒</span>
       <h3>Zéro tracking</h3>
       <p>L'app ne collecte rien. Pas de compte, pas de données, pas de cloud.</p>
     </div>
     <div class="feature-card">
-      <div class="emoji">🔔</div>
+      <span class="emoji">🔔</span>
       <h3>Une notif par jour</h3>
       <p>Une seule. Jamais de "tu nous manques". Mode silencieux disponible.</p>
     </div>
@@ -293,18 +296,19 @@
   <section class="privacy" id="privacy">
 
     <h2>CONFIDENTIALITÉ</h2>
-    <p class="updated">Dernière mise à jour : Mars 2026</p>
+    <span class="updated">Dernière mise à jour : Mars 2026</span>
 
     <div class="highlight">
       <p>🟢 Résumé en une phrase : SIXTICK ne collecte aucune donnée personnelle. Zéro. Point.</p>
     </div>
 
     <h3>1. Qui sommes-nous ?</h3>
-    <p>SIXTICK est une application mobile développée et publiée par PragmaSolus, micro-entreprise française. Contact : <a href="mailto:renaud@pragmasolus.com" style="color:var(--primary)">renaud@pragmasolus.com</a></p>
+    <p>SIXTICK est une application mobile développée et publiée par PragmaSolus, micro-entreprise française.<br>
+    Contact : <a href="mailto:renaud@pragmasolus.com">renaud@pragmasolus.com</a></p>
 
     <h3>2. Données collectées</h3>
     <p>SIXTICK ne collecte, ne stocke et ne transmet <strong style="color:var(--white)">aucune donnée personnelle</strong> vers des serveurs externes.</p>
-    <p style="margin-top:12px">Toutes les données de l'application (streak, préférences, heure de notification) sont stockées <strong style="color:var(--white)">uniquement sur votre appareil</strong> via AsyncStorage et sont supprimées si vous désinstallez l'application.</p>
+    <p style="margin-top:12px">Toutes les données de l'application sont stockées <strong style="color:var(--white)">uniquement sur votre appareil</strong> et sont supprimées si vous désinstallez l'application.</p>
 
     <h3>3. Données stockées localement</h3>
     <p>Les données suivantes sont stockées uniquement sur votre appareil :</p>
@@ -323,7 +327,7 @@
     <p>La fonctionnalité de partage génère une image locale sur votre appareil. SIXTICK n'accède pas à votre galerie sans votre permission explicite. Aucune image n'est envoyée à nos serveurs.</p>
 
     <h3>6. Achats in-app</h3>
-    <p>Les achats sont traités par Google Play. SIXTICK ne reçoit pas vos informations de paiement. Consultez la <a href="https://policies.google.com/privacy" style="color:var(--primary)" target="_blank">politique de confidentialité de Google</a> pour plus d'informations.</p>
+    <p>Les achats sont traités par Google Play. SIXTICK ne reçoit pas vos informations de paiement. Consultez la <a href="https://policies.google.com/privacy" target="_blank">politique de confidentialité de Google</a> pour plus d'informations.</p>
 
     <h3>7. Services tiers</h3>
     <p>SIXTICK n'intègre aucun SDK d'analytics, de publicité, ou de tracking tiers (pas de Firebase Analytics, pas de Facebook SDK, pas de publicités).</p>
@@ -335,12 +339,12 @@
     <p>Conformément au RGPD, vous disposez d'un droit d'accès, de rectification et de suppression de vos données. Étant donné que nous ne collectons aucune donnée, ces droits s'exercent directement sur votre appareil en désinstallant l'application.</p>
 
     <h3>10. Contact</h3>
-    <p>Pour toute question : <a href="mailto:renaud@pragmasolus.com" style="color:var(--primary)">renaud@pragmasolus.com</a></p>
+    <p><a href="mailto:renaud@pragmasolus.com">renaud@pragmasolus.com</a></p>
 
   </section>
 
   <footer>
-    <span>SIXTICK</span> · PragmaSolus · 2026 · <span>2,22 €</span> · Zéro bullshit
+    <span>SIXTICK</span> &nbsp;·&nbsp; PragmaSolus &nbsp;·&nbsp; 2026 &nbsp;·&nbsp; <span>2,22 €</span> &nbsp;·&nbsp; Zéro bullshit
   </footer>
 
 </body>
