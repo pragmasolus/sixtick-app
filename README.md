@@ -4,7 +4,7 @@ Ceci est le dépôt web de l'application **SIXTICK**.
 Si vous cherchez une application avec des abonnements à 80€/an et des notifications qui vous culpabilisent, vous n'êtes pas au bon endroit.
 
 ### 📋 Liens utiles
-* **Site Vitrine :** [https://ton-pseudo.github.io/sixtick-web/](https://ton-pseudo.github.io/sixtick-web/)
+* **Site Vitrine :** [https://pragmasolus.github.io/sixtick-web/](https://pragmasolus.github.io/sixtick-web/)
 * **Politique de Confidentialité :** [privacy.html](privacy.html)
 
 ### 🛠 Philosophie du projet
