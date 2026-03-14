@@ -105,6 +105,34 @@
       font-family: var(--font-mono);
     }
 
+    .download-btn {
+      margin-top: 28px;
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      background: var(--primary);
+      color: #0A0A0A;
+      border-radius: 16px;
+      padding: 18px 36px;
+      font-size: 18px;
+      font-weight: 800;
+      text-decoration: none;
+      letter-spacing: 0.5px;
+      animation: fadeUp 0.7s 0.35s ease both;
+      transition: opacity 0.2s, transform 0.2s;
+    }
+
+    .download-btn:hover {
+      opacity: 0.88;
+      transform: translateY(-2px);
+    }
+
+    .download-btn svg {
+      width: 22px;
+      height: 22px;
+      flex-shrink: 0;
+    }
+
     .manifesto {
       margin-top: 52px;
       max-width: 520px;
@@ -241,6 +269,7 @@
     @media (max-width: 600px) {
       .features { grid-template-columns: 1fr; }
       .price-badge { flex-direction: column; gap: 4px; text-align: center; }
+      .download-btn { width: 100%; justify-content: center; }
     }
   </style>
 </head>
@@ -260,6 +289,12 @@
       <span class="price">3,33 €</span>
       <span style="color:var(--muted)">· Zéro abonnement</span>
     </div>
+    <a class="download-btn" href="https://play.google.com/store/apps/details?id=com.sixtick.app" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+        <path d="M3.18 23.76c.3.17.64.24.98.21l12.92-11.92-3.4-3.4L3.18 23.76zm16.7-13.2L16.74 8.8 13.1 12l3.64 3.2 2.87-1.56c.82-.45.82-1.63-.73-2.88zM2.1.44C1.8.76 1.63 1.27 1.63 1.93v20.14c0 .66.17 1.17.47 1.49l.08.08L13.1 12.5v-.28L2.18.36 2.1.44zm10.06 10.62L3.18.24c-.34-.03-.68.04-.98.21l10.5 11.85-1.54-1.24z"/>
+      </svg>
+      Télécharger sur Google Play
+    </a>
     <blockquote class="manifesto">
       "Pas de gurus, pas d'abonnements, pas de bullshit.<br>
       Juste toi et une minute pour rester humain."
@@ -270,7 +305,7 @@
   <section class="features">
     <div class="feature-card">
       <span class="emoji">⚡</span>
-      <h3>39 exercices</h3>
+      <h3>40 exercices</h3>
       <p>Respiration, rire forcé, grimace folle, boxeur fantôme... Un par jour, aléatoire.</p>
     </div>
     <div class="feature-card">
