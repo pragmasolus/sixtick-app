@@ -27,7 +27,6 @@
       overflow-x: hidden;
     }
 
-    /* ── HERO ── */
     .hero {
       position: relative;
       min-height: 100vh;
@@ -107,30 +106,18 @@
 
     .download-btn {
       margin-top: 28px;
-      display: inline-flex;
-      align-items: center;
-      gap: 12px;
-      background: var(--primary);
-      color: #0A0A0A;
-      border-radius: 16px;
-      padding: 18px 36px;
-      font-size: 18px;
-      font-weight: 800;
-      text-decoration: none;
-      letter-spacing: 0.5px;
+      display: inline-block;
       animation: fadeUp 0.7s 0.35s ease both;
       transition: opacity 0.2s, transform 0.2s;
     }
 
     .download-btn:hover {
-      opacity: 0.88;
+      opacity: 0.85;
       transform: translateY(-2px);
     }
 
-    .download-btn svg {
-      width: 22px;
-      height: 22px;
-      flex-shrink: 0;
+    .download-btn img {
+      height: 56px;
     }
 
     .manifesto {
@@ -146,7 +133,6 @@
       animation: fadeUp 0.7s 0.4s ease both;
     }
 
-    /* ── FEATURES ── */
     .features {
       max-width: 840px;
       margin: 0 auto;
@@ -173,7 +159,6 @@
     .feature-card h3 { font-size: 16px; font-weight: 700; margin-bottom: 8px; }
     .feature-card p { font-size: 14px; color: var(--muted); line-height: 1.65; }
 
-    /* ── DIVIDER ── */
     .divider {
       height: 1px;
       background: var(--border);
@@ -181,7 +166,6 @@
       margin: 0 auto;
     }
 
-    /* ── PRIVACY ── */
     .privacy {
       max-width: 700px;
       margin: 0 auto;
@@ -247,7 +231,6 @@
       font-weight: 600;
     }
 
-    /* ── FOOTER ── */
     footer {
       text-align: center;
       padding: 36px 24px;
@@ -260,7 +243,6 @@
 
     footer span { color: var(--primary); }
 
-    /* ── ANIMATIONS ── */
     @keyframes fadeUp {
       from { opacity: 0; transform: translateY(18px); }
       to   { opacity: 1; transform: translateY(0); }
@@ -269,13 +251,11 @@
     @media (max-width: 600px) {
       .features { grid-template-columns: 1fr; }
       .price-badge { flex-direction: column; gap: 4px; text-align: center; }
-      .download-btn { width: 100%; justify-content: center; }
     }
   </style>
 </head>
 <body>
 
-  <!-- HERO -->
   <section class="hero">
     <div class="logo">SIXTICK</div>
     <div class="tagline"><span>60 secondes</span> par jour. C'est tout.</div>
@@ -289,11 +269,8 @@
       <span class="price">3,33 €</span>
       <span style="color:var(--muted)">· Zéro abonnement</span>
     </div>
-    <a class="download-btn" href="https://play.google.com/store/apps/details?id=com.sixtick.app" target="_blank" rel="noopener">
-      <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-        <path d="M3.18 23.76c.3.17.64.24.98.21l12.92-11.92-3.4-3.4L3.18 23.76zm16.7-13.2L16.74 8.8 13.1 12l3.64 3.2 2.87-1.56c.82-.45.82-1.63-.73-2.88zM2.1.44C1.8.76 1.63 1.27 1.63 1.93v20.14c0 .66.17 1.17.47 1.49l.08.08L13.1 12.5v-.28L2.18.36 2.1.44zm10.06 10.62L3.18.24c-.34-.03-.68.04-.98.21l10.5 11.85-1.54-1.24z"/>
-      </svg>
-      Télécharger sur Google Play
+    <a href="https://play.google.com/store/apps/details?id=com.sixtick.app" target="_blank" class="download-btn">
+      <img src="https://play.google.com/intl/fr/badges/static/images/badges/fr_badge_web_generic.png" alt="Disponible sur Google Play" />
     </a>
     <blockquote class="manifesto">
       "Pas de gurus, pas d'abonnements, pas de bullshit.<br>
@@ -301,7 +278,6 @@
     </blockquote>
   </section>
 
-  <!-- FEATURES -->
   <section class="features">
     <div class="feature-card">
       <span class="emoji">⚡</span>
@@ -327,7 +303,6 @@
 
   <div class="divider"></div>
 
-  <!-- POLITIQUE DE CONFIDENTIALITÉ -->
   <section class="privacy" id="privacy">
 
     <h2>CONFIDENTIALITÉ</h2>
@@ -339,7 +314,7 @@
 
     <h3>1. Qui sommes-nous ?</h3>
     <p>SIXTICK est une application mobile développée et publiée par PragmaSolus, micro-entreprise française.<br>
-    Contact : <a href="mailto:renaud@pragmasolus.com">renaud@pragmasolus.com</a></p>
+    Contact : <a href="/cdn-cgi/l/email-protection#a3d1c6cdc2d6c7e3d3d1c2c4cec2d0cccfd6d08dc0ccce"><span class="__cf_email__" data-cfemail="c9bbaca7a8bcad89b9bba8aea4a8baa6a5bcbae7aaa6a4">[email&#160;protected]</span></a></p>
 
     <h3>2. Données collectées</h3>
     <p>SIXTICK ne collecte, ne stocke et ne transmet <strong style="color:var(--white)">aucune donnée personnelle</strong> vers des serveurs externes.</p>
@@ -364,23 +339,24 @@
     <h3>6. Achats in-app</h3>
     <p>Les achats sont traités par Google Play. SIXTICK ne reçoit pas vos informations de paiement. Consultez la <a href="https://policies.google.com/privacy" target="_blank">politique de confidentialité de Google</a> pour plus d'informations.</p>
 
-    <h3>7. Services tiers</h3>
+    <h3>7. Données de santé et bien-être</h3>
+    <p>SIXTICK est une application de bien-être proposant des exercices de courte durée (respiration, mouvement, relaxation). L'application :</p>
+    <ul>
+      <li><strong style="color:var(--white)">Ne collecte pas</strong> de données de santé (fréquence cardiaque, activité physique, etc.)</li>
+      <li><strong style="color:var(--white)">Ne lit pas</strong> les données de santé de votre appareil ou de Google Fit</li>
+      <li><strong style="color:var(--white)">Ne partage pas</strong> d'informations liées à votre santé avec des tiers</li>
+      <li>Stocke uniquement en local le nombre d'exercices complétés et la durée totale, sans lien avec des métriques de santé</li>
+    </ul>
+    <p style="margin-top:12px">Ces données locales ne sont jamais transmises à des serveurs externes.</p>
+
+    <h3>8. Services tiers</h3>
     <p>SIXTICK n'intègre aucun SDK d'analytics, de publicité, ou de tracking tiers (pas de Firebase Analytics, pas de Facebook SDK, pas de publicités).</p>
 
-    <h3>8. Enfants</h3>
+    <h3>9. Enfants</h3>
     <p>SIXTICK ne collecte pas de données sur les utilisateurs de moins de 13 ans. L'application n'est pas spécifiquement destinée aux enfants.</p>
 
-    <h3>9. Vos droits</h3>
+    <h3>10. Vos droits</h3>
     <p>Conformément au RGPD, vous disposez d'un droit d'accès, de rectification et de suppression de vos données. Étant donné que nous ne collectons aucune donnée, ces droits s'exercent directement sur votre appareil en désinstallant l'application.</p>
 
-    <h3>10. Contact</h3>
-    <p><a href="mailto:renaud@pragmasolus.com">renaud@pragmasolus.com</a></p>
-
-  </section>
-
-  <footer>
-    <span>SIXTICK</span> &nbsp;·&nbsp; PragmaSolus &nbsp;·&nbsp; 2026 &nbsp;·&nbsp; <span>3,33 €</span> &nbsp;·&nbsp; Zéro bullshit
-  </footer>
-
-</body>
-</html>
+    <h3>11. Contact</h3>
+    <p><a href="/cdn-cgi/l/email-protection#0b796e656a7e6f4b7b796a6c666a7864677e7825686466"><span class="__cf_email__" data-cfemail
